@@ -39,11 +39,6 @@ android {
         viewBinding = true
         dataBinding = true
     }
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
-        }
-    }
 }
 
 dependencies {
@@ -63,7 +58,11 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation("org.robolectric:robolectric:${Version.robolectric}")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+
+    // Mockk
+    testImplementation("io.mockk:mockk:${Version.mockk}")
 
     // Room
     kapt("androidx.room:room-compiler:${Version.room}")
@@ -71,8 +70,4 @@ dependencies {
     implementation("androidx.room:room-runtime:${Version.room}")
     implementation("androidx.room:room-ktx:${Version.room}")
     testImplementation("androidx.room:room-testing:${Version.room}")
-
-    // Mockk
-    testImplementation("io.mockk:mockk:${Version.mockk}")
-    androidTestImplementation("io.mockk:mockk-android:${Version.mockk}")
 }
