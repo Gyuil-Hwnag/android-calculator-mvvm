@@ -2,6 +2,11 @@
     * 리팩토링
         * [x] calculator 모듈은 data 모듈의 구현체에 의존하지 않아야 한다.
         * [x] data 모듈의 구현체는 모두 internal class여야 한다.
+    * 1차 피드백
+        * [x] History id값 추가(DiffUtils 비교 & 같은 수식, 같은 값 오는 경우)
+        * [x] 계산 로직 domain 모듈로 이전(ViewModel에서 계산후 히스토리 적용 관련 로직 UseCase로 이전)
+        * [x] executorService 제거 & withContext로 수정
+        * [x] ViewModel에서 Calculator 객체 가지고 있던 내용 제거
 
 # Step3(2023-08-07) #
     * 계산 기록
