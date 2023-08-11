@@ -17,11 +17,7 @@ internal class HistoryRepositoryImpl(
         }
     }
 
-    override suspend fun getHistories(): List<History> {
-        var histories = emptyList<History>()
-        withContext(Dispatchers.IO) {
-            histories = historyDao.getHistories().map { it.toDomain() }
-        }
-        return histories
+    override suspend fun getHistories(): List<History> = withContext(Dispatchers.IO) {
+        historyDao.getHistories().map { it.toDomain() }
     }
 }

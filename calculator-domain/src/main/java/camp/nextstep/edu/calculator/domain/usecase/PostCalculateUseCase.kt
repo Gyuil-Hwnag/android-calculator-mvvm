@@ -8,8 +8,8 @@ import camp.nextstep.edu.calculator.domain.repository.HistoryRepository
 class PostCalculateUseCase(
     private val repository: HistoryRepository
 ) {
-    suspend operator fun invoke(calculator: Calculator, expression: Expression): Result<Int> {
-        val result = calculator.calculate(expression.toString())
+    suspend operator fun invoke(expression: Expression): Result<Int> {
+        val result = Calculator().calculate(expression.toString())
         result?.let {
             repository.insertHistory(History(expressions = expression.toString(), result = result))
             return Result.success(result)
