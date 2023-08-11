@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import camp.nextstep.edu.calculator.domain.Calculator
 import camp.nextstep.edu.calculator.domain.Expression
 import camp.nextstep.edu.calculator.domain.Operator
 import camp.nextstep.edu.calculator.domain.model.History
@@ -17,7 +16,6 @@ class CalculatorViewModel(
     private val getCalculateHistoriesUseCase: GetCalculateHistoriesUseCase
 ): ViewModel() {
 
-    private val calculator = Calculator()
     private var expression: Expression = Expression.EMPTY
 
     private val _text: MutableLiveData<String> = MutableLiveData()
@@ -49,7 +47,7 @@ class CalculatorViewModel(
 
     fun calculate() {
         viewModelScope.launch {
-            postCalculateUseCase(calculator = calculator, expression = expression)
+            postCalculateUseCase(expression = expression)
                 .onSuccess {
                     expression = Expression(listOf(it))
                     setText(expression)
@@ -69,7 +67,12 @@ class CalculatorViewModel(
 
     private fun getHistories() {
         viewModelScope.launch {
-            _histories.postValue(getCalculateHistoriesUseCase().orEmpty())
+            getCalculateHistoriesUseCase()
+                .onSuccess { _histories.postValue(it)
+                }.onFailure {
+                    toggleHistory()
+                    _inCompleteExpressionError.value = Event(it.message ?: "알 수 없는 에러입니다.")
+                }
         }
     }
 
