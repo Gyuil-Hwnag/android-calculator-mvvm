@@ -1,4 +1,4 @@
-# Step4(2023-08-09) #
+#### Step4(2023-08-09) https://github.com/next-step/android-calculator-mvvm/pull/152
     * 리팩토링
         * [x] calculator 모듈은 data 모듈의 구현체에 의존하지 않아야 한다.
         * [x] data 모듈의 구현체는 모두 internal class여야 한다.
@@ -8,7 +8,7 @@
         * [x] executorService 제거 & withContext로 수정
         * [x] ViewModel에서 Calculator 객체 가지고 있던 내용 제거
 
-# Step3(2023-08-07) #
+#### Step3(2023-08-07) https://github.com/next-step/android-calculator-mvvm/pull/149
     * 계산 기록
         * [x] = 버튼을 누를 때마다 계산 기록에 저장되어야 한다.
         * [x] 시계 버튼을 누르면 계산 기록을 볼 수 있는 UI가 보여야 한다.
@@ -23,7 +23,7 @@
         * [x] DiffCallback 동일성 비교 수정 (유일한 값으로)
         * [x] ViewModel에서 Dispatcher.IO로 설정하던 부분 Data 모듈이 담당하도록 이전
 
-# Step2(2023-08-05) #
+#### Step2(2023-08-05) https://github.com/next-step/android-calculator-mvvm/pull/147
     * Calculator MVVM 구현
         * [x] 사용자가 클릭한 값에 따라서 사칙 연산을 수행하는 계산기 구현 및 테스트 코드 추가
         * [x] 사용자가 입력한 숫자를 화면에 보여줘야 한다.
@@ -40,8 +40,8 @@
         * [x] onNumberButtonClicked(number: Int) 함수 -> onButtonClicked(viewId: Int)
         * [] MutableLiveData<String> -> MutableLiveData<Expression>
         * [] 테스트 코드 viewModel.removeLast() 메서드 앞에 viewModel.addToExpression()에 의존성을 가지던 내용
-
-# Step1(2023-08-03) #
+        
+#### Step1(2023-08-03) https://github.com/next-step/android-calculator-mvvm/pull/146
     * Counter MVVM 구현
         * [x] UP 버튼을 클릭하면 숫자가 1 증가해야 한다.
         * [x] DOWN 버튼을 클릭하면 숫자가 1 감소해야 한다.
